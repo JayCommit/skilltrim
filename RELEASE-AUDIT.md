@@ -28,3 +28,21 @@ SHA-256 values differed and were investigated before editing them. All 64 histor
 Optional `.[tokens]` was installed here (tiktoken 0.14.0). `skilltrim benchmarks/fixtures --encoding cl100k_base --json` succeeded and still preserved text (508 → 508). It is not part of the required install. No encoding download was separately confirmed.
 
 Not run, so not claimed: Windows, two-agent loading, paired task success, routing accuracy, and PyPI publication. GitHub Actions CI is new for this public repository and was not described as green in this note.
+
+## 2026-11-06 v0.0.2
+
+Linux check for the v0.0.2 release. Python 3.11.2. User-facing version is 0.0.2 in `pyproject.toml` and `skilltrim.__version__`. `skilltrim --version` prints `skilltrim 0.0.2`. JSON reports use the same string. Tests assert that string so the two files cannot drift silently.
+
+Commands and results:
+
+- Fresh virtualenv and `pip install .` (not only an editable install).
+- `python -m unittest discover -s tests -v`: 30 tests, OK. The previous suite had 25 tests. Added checks cover the 0.0.2 version string and the Unix skill installer (host paths, no nested `skilltrim` folder, no `.git` / `.venv` / benchmark corpora).
+- `skilltrim --help` exited 0.
+- `skilltrim benchmarks/fixtures --json`: version 0.0.2, estimated counter, 693 → 693 tokens, no removals. Default mode still preserves text.
+- `python benchmarks/run.py` matched `benchmarks/baseline.json` exactly. That file was not edited.
+- `bash -n scripts/install-skill.sh` exited 0. Installer behavior was exercised on this Linux host with a temporary `HOME`, not on macOS.
+
+Not run, so not claimed: macOS, Windows (`scripts/install-skill.ps1` was not executed), two-agent loading, paired task success, routing accuracy, and PyPI publication. GitHub Actions CI is still the workflow added for the public repository. It was not described as green in this note.
+
+`benchmarks/real.py` now resolves clone and result paths from the repository directory instead of the process working directory. The pinned corpora were not re-cloned for this release, and `benchmarks/real-results.json` was not rewritten.
+

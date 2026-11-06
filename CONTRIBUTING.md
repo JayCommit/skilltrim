@@ -15,7 +15,9 @@ python -m venv .venv
 .venv/bin/skilltrim benchmarks/fixtures --json
 ```
 
-On Windows the virtualenv executables are `.venv\Scripts\python` and `.venv\Scripts\skilltrim`. Use `pip install .` (not only an editable install) when you want to match a release install. The optional tokenizer extra is `pip install ".[tokens]"`; it is not required for the default estimator.
+On Windows the virtualenv executables are `.venv\Scripts\python` and `.venv\Scripts\skilltrim`, after `.venv\Scripts\Activate.ps1`. Use `pip install .` (not only an editable install) when you want to match a release install. The optional tokenizer extra is `pip install ".[tokens]"`; it is not required for the default estimator.
+
+Install the agent skill with `bash scripts/install-skill.sh` on macOS or Linux, or `powershell -ExecutionPolicy Bypass -File .\scripts\install-skill.ps1` on Windows. Default `--scope user` writes under the home directory. `--scope project` writes under the current directory. The scripts copy `SKILL.md` and the files it uses. They do not copy `.git`, `.venv`, or benchmark corpora, and they do not nest a second `skilltrim` directory.
 
 Parse the bundled skill with the installed package:
 

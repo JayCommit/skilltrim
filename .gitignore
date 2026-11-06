@@ -8,6 +8,12 @@ dist/
 .test-output/
 corpora/
 
+# Project-scope skill installs from scripts/install-skill.sh
+.grok/
+.cursor/
+.agents/
+.claude/
+
 .DS_Store
 Thumbs.db
 .env

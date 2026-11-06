@@ -1,7 +1,9 @@
 import contextlib
 import io
 import json
+import os
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -148,6 +150,7 @@ class CliTests(unittest.TestCase):
         code, out, err = self.invoke(self.source, '--json')
         self.assertEqual(code, 0, err)
         report = json.loads(out)
+        self.assertEqual(report['version'], '0.0.2')
         self.assertEqual(report['totals']['skills'], 1)
         self.assertIsNone(report['output'])
         self.assertEqual(before, {p: p.read_bytes() for p in before})
@@ -207,6 +210,135 @@ class CliTests(unittest.TestCase):
         except OSError:
             self.skipTest('Creating symbolic links requires OS privileges')
         self.assertEqual(self.invoke(self.source)[0], 2)
+
+
+    def test_version_string_is_0_0_2(self):
+        import skilltrim
+        self.assertEqual(skilltrim.__version__, '0.0.2')
+        pyproject = Path(__file__).resolve().parents[1].joinpath('pyproject.toml').read_text(encoding='utf-8')
+        self.assertIn('version = "0.0.2"', pyproject)
+        out, err = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            with self.assertRaises(SystemExit) as caught:
+                main(['--version'])
+        self.assertEqual(caught.exception.code, 0)
+        self.assertEqual(out.getvalue().strip(), 'skilltrim 0.0.2')
+        self.assertEqual(err.getvalue(), '')
+
+
+REPO = Path(__file__).resolve().parents[1]
+INSTALL_SH = REPO / 'scripts' / 'install-skill.sh'
+GROK_BOT_URL = 'https://github.com/JayCommit/skilltrim'
+
+
+class InstallScriptTests(unittest.TestCase):
+    def setUp(self):
+        scratch = REPO / '.test-output'
+        scratch.mkdir(exist_ok=True)
+        self.temp = tempfile.TemporaryDirectory(dir=scratch)
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+
+    def run_install(self, *args, cwd, home):
+        env = os.environ.copy()
+        env['HOME'] = str(home)
+        return subprocess.run(
+            ['bash', str(INSTALL_SH), *args],
+            cwd=cwd,
+            env=env,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+
+    def assert_skill_tree(self, dest: Path):
+        self.assertTrue((dest / 'SKILL.md').is_file(), dest)
+        self.assertFalse((dest / 'skilltrim').exists(), dest)
+        self.assertFalse((dest / '.git').exists(), dest)
+        self.assertFalse((dest / '.venv').exists(), dest)
+        self.assertFalse((dest / 'benchmarks' / 'fixtures').exists(), dest)
+        self.assertFalse((dest / 'benchmarks' / 'real-results.json').exists(), dest)
+        self.assertFalse((dest / 'benchmarks' / 'real-example.json').exists(), dest)
+        self.assertFalse((dest / 'benchmarks' / 'baseline.json').exists(), dest)
+        self.assertTrue((dest / 'benchmarks' / 'README.md').is_file(), dest)
+        self.assertTrue((dest / 'scripts' / 'skilltrim.py').is_file(), dest)
+        self.assertTrue((dest / 'src' / 'skilltrim' / 'cli.py').is_file(), dest)
+        self.assertTrue((dest / 'pyproject.toml').is_file(), dest)
+        text = (dest / 'SKILL.md').read_text(encoding='utf-8')
+        self.assertIn('name: skilltrim', text)
+        self.assertIn('description:', text)
+        self.assertEqual(dest.name, 'skilltrim')
+
+    def test_bash_syntax(self):
+        proc = subprocess.run(['bash', '-n', str(INSTALL_SH)], text=True, capture_output=True, check=False)
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+
+    def test_user_scope_all_hosts_without_double_nesting(self):
+        home = self.root / 'home'
+        home.mkdir()
+        proc = self.run_install('--host', 'all', '--scope', 'user', cwd=self.root, home=home)
+        self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
+        for rel in (
+            '.grok/skills/skilltrim',
+            '.cursor/skills/skilltrim',
+            '.agents/skills/skilltrim',
+            '.gemini/config/skills/skilltrim',
+            '.gemini/antigravity-cli/skills/skilltrim',
+            '.claude/skills/skilltrim',
+        ):
+            self.assert_skill_tree(home / rel)
+        self.assertFalse((self.root / '.grok').exists())
+        self.assertIn(GROK_BOT_URL, proc.stdout)
+        self.assertIn('Use the same SKILL.md', proc.stdout)
+        self.assertIn('/skilltrim', proc.stdout)
+        nested = home / '.cursor/skills/skilltrim/skilltrim'
+        nested.mkdir()
+        (nested / 'SKILL.md').write_text('stale', encoding='utf-8')
+        again = self.run_install('--host=cursor', '--scope=user', cwd=self.root, home=home)
+        self.assertEqual(again.returncode, 0, again.stderr + again.stdout)
+        self.assert_skill_tree(home / '.cursor/skills/skilltrim')
+        self.assertFalse((home / '.cursor/skills/skills').exists())
+
+    def test_project_scope_paths_and_antigravity_one_level(self):
+        home = self.root / 'home'
+        project = self.root / 'project'
+        home.mkdir()
+        project.mkdir()
+        proc = self.run_install('--host', 'all', '--scope', 'project', cwd=project, home=home)
+        self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
+        for rel in (
+            '.grok/skills/skilltrim',
+            '.cursor/skills/skilltrim',
+            '.agents/skills/skilltrim',
+            '.claude/skills/skilltrim',
+        ):
+            self.assert_skill_tree(project / rel)
+        self.assertFalse((project / '.agents/skills/skills').exists())
+        self.assertFalse((project / '.agents/skills/skilltrim/skilltrim').exists())
+        self.assertFalse((project / '.gemini').exists())
+        self.assertFalse(any(home.iterdir()))
+        self.assertIn(GROK_BOT_URL, proc.stdout)
+        anti = self.run_install('--host', 'antigravity', '--scope', 'user', cwd=project, home=home)
+        self.assertEqual(anti.returncode, 0, anti.stderr + anti.stdout)
+        self.assert_skill_tree(home / '.gemini/config/skills/skilltrim')
+        self.assert_skill_tree(home / '.gemini/antigravity-cli/skills/skilltrim')
+        self.assertFalse((home / '.agents').exists())
+        self.assertFalse((home / '.grok').exists())
+
+    def test_grok_bot_prompt_and_unknown_host(self):
+        home = self.root / 'home'
+        home.mkdir()
+        bot = self.run_install('--host', 'grok-bot', cwd=self.root, home=home)
+        self.assertEqual(bot.returncode, 0, bot.stderr + bot.stdout)
+        self.assert_skill_tree(home / '.grok/skills/skilltrim')
+        self.assertIn('Clone https://github.com/JayCommit/skilltrim', bot.stdout)
+        self.assertIn('same SKILL.md', bot.stdout)
+        grok = self.run_install('--host', 'grok', cwd=self.root, home=home)
+        self.assertEqual(grok.returncode, 0, grok.stderr + grok.stdout)
+        self.assertNotIn(GROK_BOT_URL, grok.stdout)
+        bad = self.run_install('--host', 'nope', cwd=self.root, home=home)
+        self.assertEqual(bad.returncode, 2)
+        self.assertIn('unknown host', bad.stderr)
 
 
 if __name__ == '__main__':
