@@ -1,0 +1,22 @@
+{
+  "collection": "anthropic",
+  "revision": "ca45fc496a3436251f191354091d557da31c15b5",
+  "path": "skills/brand-guidelines/SKILL.md",
+  "sha256": "1120b3769e2985cefb3d25be981b1f914abeba57ae079b83c20c666c164fa9fe",
+  "before_tokens": 559,
+  "default_after_tokens": 559,
+  "experimental_after_tokens": 518,
+  "review_items": 2,
+  "attribution": {
+    "copyright": "Copyright 2026 Anthropic, PBC",
+    "license": "Apache License, Version 2.0",
+    "license_url": "http://www.apache.org/licenses/LICENSE-2.0",
+    "upstream_license_file": "skills/brand-guidelines/LICENSE.txt",
+    "source_repository": "https://github.com/anthropics/skills",
+    "source_path": "skills/brand-guidelines/SKILL.md",
+    "source_revision": "ca45fc496a3436251f191354091d557da31c15b5",
+    "note": "Short unified-diff excerpt of an experimental heuristic cut. Not the original file, not the upstream corpus, and not an endorsed optimization or behavioral result.",
+    "sha256_note": "sha256 is the LF git-blob digest of the newline-normalized UTF-8 text at the pinned revision. The same bytes with CRLF newlines hash to a0aa0a21ebf9e8511a045cc234bc839adc2b6706db727add14e9855f242e11a7, which matched an earlier working-tree digest and is not the git object."
+  },
+  "diff": "--- \n+++ \n@@ -10,7 +10,6 @@\n \n To access Anthropic's official brand identity and style resources, use this skill.\n \n-**Keywords**: branding, corporate identity, visual identity, post-processing, styling, brand colors, typography, Anthropic brand, visual formatting, visual design\n \n ## Brand Guidelines\n \n"
+}

@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skilltrim"
+version = "0.0.1"
+description = "Reviewable, conservative compression for Agent Skills"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["PyYAML>=6.0.2,<7"]
+
+[project.optional-dependencies]
+tokens = ["tiktoken>=0.8,<1"]
+
+[project.scripts]
+skilltrim = "skilltrim.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

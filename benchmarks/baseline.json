@@ -1,0 +1,28 @@
+{
+  "corpus": "three synthetic fixtures, not real-world effectiveness evidence",
+  "token_counter": "estimated-utf8-bytes/4",
+  "skills": [
+    {
+      "name": "lean-csv",
+      "before_tokens": 98,
+      "after_tokens": 98,
+      "reduction_percent": 0.0
+    },
+    {
+      "name": "protected-csv",
+      "before_tokens": 157,
+      "after_tokens": 157,
+      "reduction_percent": 0.0
+    },
+    {
+      "name": "verbose-csv",
+      "before_tokens": 438,
+      "after_tokens": 438,
+      "reduction_percent": 0.0
+    }
+  ],
+  "weighted_reduction_percent": 0.0,
+  "mean_reduction_percent": 0.0,
+  "task_success_evaluated": false,
+  "routing_accuracy_evaluated": false
+}

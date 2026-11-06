@@ -1,0 +1,520 @@
+[
+  {
+    "collection": "anthropic",
+    "revision": "ca45fc496a3436251f191354091d557da31c15b5",
+    "skills": [
+      {
+        "path": "skills/academy-guide/SKILL.md",
+        "sha256": "f27992510c051355dfe68c92394d509af730da5298094ec86834ee40bbd31376",
+        "before_tokens": 1939,
+        "default_after_tokens": 1939,
+        "experimental_after_tokens": 1939,
+        "review_items": 0
+      },
+      {
+        "path": "skills/algorithmic-art/SKILL.md",
+        "sha256": "3bc4092c09804853186524c826bc0621b940bb6122c05b84496dff95388e6eef",
+        "before_tokens": 4943,
+        "default_after_tokens": 4943,
+        "experimental_after_tokens": 4943,
+        "review_items": 6
+      },
+      {
+        "path": "skills/brand-guidelines/SKILL.md",
+        "sha256": "1120b3769e2985cefb3d25be981b1f914abeba57ae079b83c20c666c164fa9fe",
+        "before_tokens": 559,
+        "default_after_tokens": 559,
+        "experimental_after_tokens": 518,
+        "review_items": 2
+      },
+      {
+        "path": "skills/canvas-design/SKILL.md",
+        "sha256": "a1f288079624402f30682753c1d43920b6664785698d21d3e7aa197450a6448b",
+        "before_tokens": 2985,
+        "default_after_tokens": 2985,
+        "experimental_after_tokens": 2985,
+        "review_items": 6
+      },
+      {
+        "path": "skills/claude-api/SKILL.md",
+        "sha256": "40537cca17c4aa86e4ce83ced39efcbfb1204905e3cf4c4ff98f2eab011e4b7f",
+        "error": "description must be a non-empty string of at most 1024 characters"
+      },
+      {
+        "path": "skills/discernment-nudge/SKILL.md",
+        "sha256": "9191177c4a8ef11a20dace786d708506b22d43e748c71287bb823de0dc812dad",
+        "before_tokens": 2648,
+        "default_after_tokens": 2648,
+        "experimental_after_tokens": 2622,
+        "review_items": 3
+      },
+      {
+        "path": "skills/doc-coauthoring/SKILL.md",
+        "sha256": "2e47d78846faeea4a56e9809c52700087a15a2155a3f293a3efbaded81398ef4",
+        "before_tokens": 3954,
+        "default_after_tokens": 3954,
+        "experimental_after_tokens": 3954,
+        "review_items": 0
+      },
+      {
+        "path": "skills/docx/SKILL.md",
+        "sha256": "8017469ea95fb7d28225c62daf8e2f3492a7b516fc64c18c28977cbf8980b7fe",
+        "before_tokens": 1728,
+        "default_after_tokens": 1728,
+        "experimental_after_tokens": 1728,
+        "review_items": 0
+      },
+      {
+        "path": "skills/frontend-design/SKILL.md",
+        "sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+        "before_tokens": 2348,
+        "default_after_tokens": 2348,
+        "experimental_after_tokens": 2348,
+        "review_items": 0
+      },
+      {
+        "path": "skills/internal-comms/SKILL.md",
+        "sha256": "067b7587a344a928fc6534ef66b1bcd591fc7c26d207ea7ca3334aeb678d6475",
+        "before_tokens": 378,
+        "default_after_tokens": 378,
+        "experimental_after_tokens": 378,
+        "review_items": 0
+      },
+      {
+        "path": "skills/mcp-builder/SKILL.md",
+        "sha256": "b483b56d6673134497e45489c317f26ae0f1429c194db0297e43073e17e6748c",
+        "before_tokens": 2783,
+        "default_after_tokens": 2783,
+        "experimental_after_tokens": 2782,
+        "review_items": 2
+      },
+      {
+        "path": "skills/pdf/SKILL.md",
+        "sha256": "9f78b8359fbd4943ad260a7a1e436e5a96503406d6c34e99f69223d647d85b9c",
+        "before_tokens": 2018,
+        "default_after_tokens": 2018,
+        "experimental_after_tokens": 2018,
+        "review_items": 1
+      },
+      {
+        "path": "skills/pptx/SKILL.md",
+        "sha256": "a7ff03e2c85b636f55232a6b1555f5dd90216b7a1a359ab289d8364e6acbc6a0",
+        "before_tokens": 5199,
+        "default_after_tokens": 5199,
+        "experimental_after_tokens": 5199,
+        "review_items": 0
+      },
+      {
+        "path": "skills/skill-creator/SKILL.md",
+        "sha256": "dcd4803e61e913e6fc27294184cd3a71f09f5e924ff20c8a9a20173e7b3c2bcf",
+        "before_tokens": 8292,
+        "default_after_tokens": 8292,
+        "experimental_after_tokens": 8292,
+        "review_items": 0
+      },
+      {
+        "path": "skills/slack-gif-creator/SKILL.md",
+        "sha256": "2efca615ce55a3edd8fc05c779068a8085816617991987e446606403cd3abb22",
+        "before_tokens": 1961,
+        "default_after_tokens": 1961,
+        "experimental_after_tokens": 1961,
+        "review_items": 0
+      },
+      {
+        "path": "skills/theme-factory/SKILL.md",
+        "sha256": "c35893e221e28895c52143cc11bf30e41a44817796b39d4b15727dadc9796552",
+        "before_tokens": 781,
+        "default_after_tokens": 781,
+        "experimental_after_tokens": 781,
+        "review_items": 0
+      },
+      {
+        "path": "skills/web-artifacts-builder/SKILL.md",
+        "sha256": "81c5002c6643b0de7b8710b00e7a9038daa6fb9b68d59870ee6adb12da8d10f8",
+        "before_tokens": 772,
+        "default_after_tokens": 772,
+        "experimental_after_tokens": 772,
+        "review_items": 0
+      },
+      {
+        "path": "skills/webapp-testing/SKILL.md",
+        "sha256": "51b7349e77ec63b7744a6f63647e7566a0b4d2e301121cc10e8c2113af6556a2",
+        "before_tokens": 979,
+        "default_after_tokens": 979,
+        "experimental_after_tokens": 979,
+        "review_items": 4
+      },
+      {
+        "path": "skills/xlsx/SKILL.md",
+        "sha256": "6712b39718fe815054abca9c3ee72f989613e6f771c8a5c58f30a65a6c905622",
+        "before_tokens": 2150,
+        "default_after_tokens": 2150,
+        "experimental_after_tokens": 2150,
+        "review_items": 0
+      },
+      {
+        "path": "template/SKILL.md",
+        "sha256": "eb685d91de039ed864fbd790cddf31684b017fd4a34ee1a55760d8d7cdbadefa",
+        "error": "name 'template-skill' must match parent directory 'template'"
+      }
+    ]
+  },
+  {
+    "collection": "openai",
+    "revision": "49f948faa9258a0c61caceaf225e179651397431",
+    "skills": [
+      {
+        "path": "skills/.curated/aspnet-core/SKILL.md",
+        "sha256": "1f487ef3565e5ac1ee6c93cbeb9ac666292b30285877c82ddb0a77c9777fe92f",
+        "before_tokens": 1386,
+        "default_after_tokens": 1386,
+        "experimental_after_tokens": 1344,
+        "review_items": 2
+      },
+      {
+        "path": "skills/.curated/chatgpt-apps/SKILL.md",
+        "sha256": "c3a13a659ce26e9d067b5a97c321e8abec6d8e878afce31b7e841dfcf2635c3a",
+        "before_tokens": 4907,
+        "default_after_tokens": 4907,
+        "experimental_after_tokens": 4866,
+        "review_items": 6
+      },
+      {
+        "path": "skills/.curated/cli-creator/SKILL.md",
+        "sha256": "24058eabf0aafce6def3fb937ac93cbe3fa341c653c658dc589edb77f73d6152",
+        "before_tokens": 2626,
+        "default_after_tokens": 2626,
+        "experimental_after_tokens": 2626,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/cloudflare-deploy/SKILL.md",
+        "sha256": "d7632537cf19be17cf33d2c696b9d9c2ea3ee51026030e9b203d5b9255e75b15",
+        "before_tokens": 1845,
+        "default_after_tokens": 1845,
+        "experimental_after_tokens": 1845,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/define-goal/SKILL.md",
+        "sha256": "708df89ff19cbae82a762efae036735d1914b5c7e44df1832e0b723f6cd9ee30",
+        "before_tokens": 1412,
+        "default_after_tokens": 1412,
+        "experimental_after_tokens": 1371,
+        "review_items": 2
+      },
+      {
+        "path": "skills/.curated/figma/SKILL.md",
+        "sha256": "5b11f7c8d0ce4c047b401323e7b8fe6559bd3162a3397bf5248634a5444609d5",
+        "before_tokens": 793,
+        "default_after_tokens": 793,
+        "experimental_after_tokens": 793,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/figma-code-connect-components/SKILL.md",
+        "sha256": "0f19edad8aed28063a3517c419fbcbef5421d024f189fd02a17fae25093ec69d",
+        "before_tokens": 4191,
+        "default_after_tokens": 4191,
+        "experimental_after_tokens": 4120,
+        "review_items": 15
+      },
+      {
+        "path": "skills/.curated/figma-create-design-system-rules/SKILL.md",
+        "sha256": "1f4d7e16ba5325a80da32e2e6bde0ea850ba9287f35f4675d51d55d2f0dc6e2a",
+        "before_tokens": 4556,
+        "default_after_tokens": 4556,
+        "experimental_after_tokens": 4556,
+        "review_items": 16
+      },
+      {
+        "path": "skills/.curated/figma-create-new-file/SKILL.md",
+        "sha256": "23f429203bd57f186905b2523d4ff8bdf10d3b85b39fc7eed4786097d81f1adc",
+        "before_tokens": 683,
+        "default_after_tokens": 683,
+        "experimental_after_tokens": 683,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/figma-generate-design/SKILL.md",
+        "sha256": "45d2b97103bdeb31cb2744fca2c79bcefb659c88faca626bea30ec2f9342dcc9",
+        "before_tokens": 5041,
+        "default_after_tokens": 5041,
+        "experimental_after_tokens": 5041,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/figma-generate-library/SKILL.md",
+        "sha256": "7f42103c59fc181d7081404a56545f321c458d97f5ee7f7a0ab2af75ea69a85f",
+        "before_tokens": 4464,
+        "default_after_tokens": 4464,
+        "experimental_after_tokens": 4464,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/figma-implement-design/SKILL.md",
+        "sha256": "63f3d12d444547bbf68c10a12982b1f42e0f6e26fc074324564a13184d4b15ad",
+        "before_tokens": 2906,
+        "default_after_tokens": 2906,
+        "experimental_after_tokens": 2906,
+        "review_items": 9
+      },
+      {
+        "path": "skills/.curated/figma-use/SKILL.md",
+        "sha256": "afa9c4ae068a18b93e4914b2d224180ace113db7713dd66f4df397f16ba9c4b4",
+        "before_tokens": 4450,
+        "default_after_tokens": 4450,
+        "experimental_after_tokens": 4450,
+        "review_items": 1
+      },
+      {
+        "path": "skills/.curated/gh-address-comments/SKILL.md",
+        "sha256": "77389eefd3fb6584210668ca8e43f4b8de87e7722ddd953474bc9e24cdfaaedd",
+        "before_tokens": 320,
+        "default_after_tokens": 320,
+        "experimental_after_tokens": 320,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/gh-fix-ci/SKILL.md",
+        "sha256": "7b326b4a2f0f5f85122144628ec02077e48841e0e0e82efce88b3415bcfb7c26",
+        "before_tokens": 913,
+        "default_after_tokens": 913,
+        "experimental_after_tokens": 913,
+        "review_items": 2
+      },
+      {
+        "path": "skills/.curated/hatch-pet/SKILL.md",
+        "sha256": "7ab0f01e8561085d1b494a6ca74abed766c655da8ec98284fb38a362c19d6871",
+        "before_tokens": 9324,
+        "default_after_tokens": 9324,
+        "experimental_after_tokens": 9324,
+        "review_items": 2
+      },
+      {
+        "path": "skills/.curated/jupyter-notebook/SKILL.md",
+        "sha256": "62f102e8554b25716dccef0ffab4572d4e3eaf05ccc76562d33a065bc9c521fb",
+        "before_tokens": 1039,
+        "default_after_tokens": 1039,
+        "experimental_after_tokens": 1039,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/linear/SKILL.md",
+        "sha256": "ce0f39c95b6c9190f8ea33614393cdb556b2684dd8388ded394e9cb915f42601",
+        "before_tokens": 1238,
+        "default_after_tokens": 1238,
+        "experimental_after_tokens": 1170,
+        "review_items": 1
+      },
+      {
+        "path": "skills/.curated/migrate-to-codex/SKILL.md",
+        "sha256": "145b7fe48360642cb7a42bad3a817f10833fa8a387ffcb4c2df8a47c01a832e2",
+        "before_tokens": 1985,
+        "default_after_tokens": 1985,
+        "experimental_after_tokens": 1985,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/netlify-deploy/SKILL.md",
+        "sha256": "bb2c29bf599a043cade932f60cc64f632ca100e8767ccdfa2ba1a42c8d43958f",
+        "before_tokens": 1753,
+        "default_after_tokens": 1753,
+        "experimental_after_tokens": 1753,
+        "review_items": 1
+      },
+      {
+        "path": "skills/.curated/notion-knowledge-capture/SKILL.md",
+        "sha256": "b49383b229bc766190ea22bb58502cfcf7e08449f5fce55a104eef1e54e27f00",
+        "before_tokens": 829,
+        "default_after_tokens": 829,
+        "experimental_after_tokens": 829,
+        "review_items": 1
+      },
+      {
+        "path": "skills/.curated/notion-meeting-intelligence/SKILL.md",
+        "sha256": "bad61faccbbe0f2cab53bcfbc4cb22f847ba8593ef14c2e37fea5b9b03346332",
+        "before_tokens": 855,
+        "default_after_tokens": 855,
+        "experimental_after_tokens": 855,
+        "review_items": 1
+      },
+      {
+        "path": "skills/.curated/notion-research-documentation/SKILL.md",
+        "sha256": "e88a46da978cf6f088a788fa92ee736df699a355a72f41f14bdc258bf3ef57e7",
+        "before_tokens": 851,
+        "default_after_tokens": 851,
+        "experimental_after_tokens": 851,
+        "review_items": 1
+      },
+      {
+        "path": "skills/.curated/notion-spec-to-implementation/SKILL.md",
+        "sha256": "6e22c4c6df441e849fa6b4b825371b579c9bb4896f97bedca5f8536020427a81",
+        "before_tokens": 881,
+        "default_after_tokens": 881,
+        "experimental_after_tokens": 881,
+        "review_items": 1
+      },
+      {
+        "path": "skills/.curated/openai-docs/SKILL.md",
+        "sha256": "057d24b4f36dab38299857777e4c0ca5bcce65d8cf89d917c174c1a0ae23d9f8",
+        "before_tokens": 4576,
+        "default_after_tokens": 4576,
+        "experimental_after_tokens": 4576,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/pdf/SKILL.md",
+        "sha256": "d108cf2b36355ab37eb5962933f4d09785ec002f3105c506129320209306b9d2",
+        "before_tokens": 630,
+        "default_after_tokens": 630,
+        "experimental_after_tokens": 630,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/playwright/SKILL.md",
+        "sha256": "0ffaabcc8e0990627c4725f18bf1c7955534a796c1c199e872909de2013ce6a8",
+        "before_tokens": 943,
+        "default_after_tokens": 943,
+        "experimental_after_tokens": 943,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/playwright-interactive/SKILL.md",
+        "sha256": "f6c1155d923e6ae3ccc12abfef2266f119f8e9546df2ddeee1f5eb369845a0a1",
+        "before_tokens": 7928,
+        "default_after_tokens": 7928,
+        "experimental_after_tokens": 7928,
+        "review_items": 5
+      },
+      {
+        "path": "skills/.curated/render-deploy/SKILL.md",
+        "sha256": "c17c75adeb1834ed5cee1e440a651ae476c4101cd63762fcd9a58eada917552d",
+        "before_tokens": 4396,
+        "default_after_tokens": 4396,
+        "experimental_after_tokens": 4396,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/screenshot/SKILL.md",
+        "sha256": "081935a6a163277537d46365f49d6b4a3cb40b4748347e7e88759c5927fa8cf5",
+        "before_tokens": 1939,
+        "default_after_tokens": 1939,
+        "experimental_after_tokens": 1939,
+        "review_items": 2
+      },
+      {
+        "path": "skills/.curated/security-best-practices/SKILL.md",
+        "sha256": "7b3dae1ffc5434d890f3c65c8f552af52d0307fab3b35dec13013c9ca3844c4f",
+        "before_tokens": 2153,
+        "default_after_tokens": 2153,
+        "experimental_after_tokens": 2091,
+        "review_items": 2
+      },
+      {
+        "path": "skills/.curated/security-ownership-map/SKILL.md",
+        "sha256": "f06c1a59247569326702c945f397af163ea96cf2ecfdf2dde280605bf89a3ec8",
+        "before_tokens": 2184,
+        "default_after_tokens": 2184,
+        "experimental_after_tokens": 2113,
+        "review_items": 1
+      },
+      {
+        "path": "skills/.curated/security-threat-model/SKILL.md",
+        "sha256": "1283c0dd62a8104d9edda4583569b5d8510b4ddaa45120687c999250fd96bad2",
+        "before_tokens": 1391,
+        "default_after_tokens": 1391,
+        "experimental_after_tokens": 1391,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/sentry/SKILL.md",
+        "sha256": "508c6f5c100586c81a34397d30f00f4b8771b66d698a7ac1836998df925dd007",
+        "before_tokens": 953,
+        "default_after_tokens": 953,
+        "experimental_after_tokens": 953,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/speech/SKILL.md",
+        "sha256": "d6120efc03ea0e80204f687801cfaec8efc4519a3430b68e13e4ebd8e1c69b52",
+        "before_tokens": 1811,
+        "default_after_tokens": 1811,
+        "experimental_after_tokens": 1811,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/transcribe/SKILL.md",
+        "sha256": "f530021da9f377362ee4214e0bc689cbb5404640d2eb88ee272d51d61f530a09",
+        "before_tokens": 709,
+        "default_after_tokens": 709,
+        "experimental_after_tokens": 709,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/vercel-deploy/SKILL.md",
+        "sha256": "f4a6cbfbb378a320fae179a79f727a881d19677e9b3db96ed49d2dc02a74fa46",
+        "before_tokens": 664,
+        "default_after_tokens": 664,
+        "experimental_after_tokens": 664,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/winui-app/SKILL.md",
+        "sha256": "917341ec9eb688d73e21362910a7178a92b2ae49544b7d8f17ee9e19adfe2ea8",
+        "before_tokens": 2818,
+        "default_after_tokens": 2818,
+        "experimental_after_tokens": 2818,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.curated/yeet/SKILL.md",
+        "sha256": "4829d4909081e1abf91507fb581e6f566ce7064001892414f32191895b08a595",
+        "before_tokens": 1738,
+        "default_after_tokens": 1738,
+        "experimental_after_tokens": 1738,
+        "review_items": 2
+      },
+      {
+        "path": "skills/.system/imagegen/SKILL.md",
+        "sha256": "826d05b806d51fa81cd650f1c0854b0a1f7fbccd1b152c588ded1797a2e7218f",
+        "before_tokens": 4051,
+        "default_after_tokens": 4051,
+        "experimental_after_tokens": 4051,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.system/openai-docs/SKILL.md",
+        "sha256": "669a42ccf3323fe0ceda6e466730bcb05dddf1e0c220d6523ea504909fc49165",
+        "before_tokens": 4687,
+        "default_after_tokens": 4687,
+        "experimental_after_tokens": 4687,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.system/plugin-creator/SKILL.md",
+        "sha256": "3b43cb214f458a1ae13e1b93a69e493241d8e12c5a474afe8ae81ae0507aa216",
+        "before_tokens": 1596,
+        "default_after_tokens": 1596,
+        "experimental_after_tokens": 1596,
+        "review_items": 0
+      },
+      {
+        "path": "skills/.system/skill-creator/SKILL.md",
+        "sha256": "a17383bfb1448637ac1f757ad891ddb9676fa30b0eff620200f0e1cbc0cc0d50",
+        "before_tokens": 4666,
+        "default_after_tokens": 4666,
+        "experimental_after_tokens": 4666,
+        "review_items": 6
+      },
+      {
+        "path": "skills/.system/skill-installer/SKILL.md",
+        "sha256": "83b31cffb2552a923f4152f0338bea548274accc5489d151a95bced8e7bcfb74",
+        "before_tokens": 810,
+        "default_after_tokens": 810,
+        "experimental_after_tokens": 810,
+        "review_items": 0
+      }
+    ]
+  }
+]
