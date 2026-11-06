@@ -1,18 +1,106 @@
 # skilltrim
 
-Experimental review tool for Agent Skills. **Not yet verified for production use:** two-agent loading and task-success evaluations are outstanding. No effectiveness or typical savings claim is made.
+Experimental review tool for Agent Skills. **Not yet verified for production use:** two-agent loading and task-success evaluations are outstanding. No effectiveness or typical savings claim is made. Default mode preserves skill text. There is no PyPI release; install from a checkout.
 
-## Install
+## Install the CLI
 
-Python 3.11+ is required. From a checkout of this folder:
+Python 3.11+ is required. PyYAML is required. tiktoken stays optional. From a checkout of this folder:
+
+### macOS and Linux
 
 ```console
-python -m venv .venv
-.venv/Scripts/python -m pip install .
-.venv/Scripts/skilltrim --help
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install .
+skilltrim --help
 ```
 
-On Unix use `.venv/bin/python` and `.venv/bin/skilltrim` instead.
+### Windows
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install .
+skilltrim --help
+```
+
+Use that activated environment for later commands. These steps are the documented install. This repository does not record a macOS or Windows run of them. `.github/workflows/ci.yml` is new for this public repository: on Python 3.11 and `ubuntu-latest` it installs the project and runs unittest, `skilltrim --help`, and `skilltrim benchmarks/fixtures --json`. A run is green only after Actions reports success.
+
+## Install the agent skill
+
+The destination folder is named `skilltrim` and contains `SKILL.md` directly. Do not nest `skilltrim/skilltrim`. The frontmatter `name` matches that folder. Antigravity requires `description`. The installer copies `SKILL.md`, the bundled CLI (`scripts/skilltrim.py` and `src/skilltrim`), `pyproject.toml`, `README.md`, `LICENSE`, and the linked reference `benchmarks/README.md`. It does not copy `.git`, `.venv`, or benchmark corpora.
+
+Paths below are install locations. Invocation strings are host conventions, not evidence that an agent loaded the skill or that routing improved.
+
+### macOS and Linux
+
+```console
+bash scripts/install-skill.sh
+bash scripts/install-skill.sh --host cursor --scope project
+```
+
+### Windows
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install-skill.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\install-skill.ps1 --host cursor --scope project
+```
+
+`--host` is `grok`, `grok-bot`, `cursor`, `openai`, `antigravity`, `claude`, or `all` (default `all`). `--scope` is `user` (default) or `project`. User scope writes under the home directory. Project scope writes under the current directory.
+
+### Grok
+
+| Scope | Path |
+| --- | --- |
+| project | `.grok/skills/skilltrim/` |
+| user | `~/.grok/skills/skilltrim/` |
+
+Invoke `/skilltrim`.
+
+### Grok Bot
+
+On the bot computer, install the same `SKILL.md` to `~/.grok/skills/skilltrim/`. The script prints this paste-in prompt:
+
+> Clone https://github.com/JayCommit/skilltrim and copy its agent skill into ~/.grok/skills/skilltrim/ on the bot computer. Copy SKILL.md plus the files that skill uses (bundled scripts/skilltrim.py, src/skilltrim, and linked references such as benchmarks/README.md). Do not copy .git, .venv, or benchmark corpora. Do not nest another skilltrim directory inside the destination; SKILL.md must sit directly at ~/.grok/skills/skilltrim/SKILL.md. Use the same SKILL.md from that repository. Invoke /skilltrim.
+
+`--scope project` also copies into `.grok/skills/skilltrim/` in the current directory. Invoke `/skilltrim`.
+
+### Cursor
+
+| Scope | Path |
+| --- | --- |
+| project | `.cursor/skills/skilltrim/` |
+| user | `~/.cursor/skills/skilltrim/` |
+
+The skill `name` matches the folder name `skilltrim`. Invoke `/skilltrim`.
+
+### OpenAI / ChatGPT app
+
+| Scope | Path |
+| --- | --- |
+| project | `.agents/skills/skilltrim/` |
+| user | `~/.agents/skills/skilltrim/` |
+
+Zip the `skilltrim` folder (the directory that directly contains `SKILL.md`). In the ChatGPT app: Plugins → Skills → Add → Upload. In Codex, invoke `$skilltrim`.
+
+### Antigravity
+
+| Scope | Path |
+| --- | --- |
+| project | `.agents/skills/skilltrim/` (one `skills` level, not `skills/skills` and not `skilltrim/skilltrim`) |
+| user | `~/.gemini/config/skills/skilltrim/` |
+| CLI | `~/.gemini/antigravity-cli/skills/skilltrim/` |
+
+Frontmatter `description` is required. Invoke `/skilltrim`.
+
+### Claude
+
+| Scope | Path |
+| --- | --- |
+| project | `.claude/skills/skilltrim/` |
+| user | `~/.claude/skills/skilltrim/` |
+
+Invoke `/skilltrim`.
 
 ## Review and export
 
@@ -26,7 +114,7 @@ Use the executable inside your virtual environment, or activate it first. Previe
 
 Review each proposed deletion against the skill's tasks. Inspect exported files before installing them. Test representative tasks, including exceptions and permissions; revert cuts that alter behavior. Routing descriptions are suggestions only and are never automatically rewritten. Optional examples can be moved manually after checking links and behavior.
 
-The bundled `SKILL.md` provides agent instructions. Copy the project folder under the name `skilltrim`; its scripts require its bundled `src` directory and PyYAML. Host discovery and invocation are not verified across agents.
+The bundled `SKILL.md` is the agent entrypoint. `scripts/skilltrim.py` needs the bundled `src` directory and PyYAML. Use the installer above rather than copying the repository tree: a full copy would include `.git`, `.venv`, and benchmark corpora, and copying the repository into an existing `skilltrim` folder nests a second `skilltrim` directory. Loading the installed skill in real agents is unverified.
 
 ## Token counts
 
@@ -66,7 +154,7 @@ The corpus remains in ignored `.test-output`; it is not redistributed as project
 
 English keyword heuristics miss implicit requirements and can misclassify background facts. Experimental deletions can break intent. Default mode therefore makes no automatic cuts. YAML validation rejects malformed or nonconforming skills rather than repairing them; client extensions may differ. Only UTF-8 SKILL.md files are supported. Supporting files are copied unchanged. Symlinks and junctions are rejected. Inputs must be stable during export; concurrent mutation is unsupported. Export copies the entire supplied tree, so select a skill collection rather than a repository containing secrets. No input scripts are executed by the analyzer.
 
-Loading and following optimized skills in two real agents is **unverified**. Task-success preservation, routing improvements, and broad host compatibility are **unverified**. Public release remains experimental until those gates pass.
+Loading and following optimized skills in two real agents is **unverified**. Task-success preservation, routing improvements, and broad host compatibility are **unverified**. macOS and Windows install commands are documented above and were not part of the recorded release run. Public release remains experimental until those gates pass. There is no PyPI package.
 
 ## Contribute or report a bad optimization
 

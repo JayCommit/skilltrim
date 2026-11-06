@@ -7,30 +7,47 @@ skilltrim is an experimental Python CLI and agent skill for reviewing Agent Skil
 - `src/skilltrim/core.py`: YAML validation, Markdown heuristics, counting, routing lint.
 - `src/skilltrim/cli.py`: input validation, preview, reports, staged collection export.
 - `scripts/skilltrim.py`: entrypoint using bundled `src`, without package installation.
+- `scripts/install-skill.sh` and `scripts/install-skill.ps1`: copy `SKILL.md` and the files it uses into a host folder named `skilltrim`. They do not copy `.git`, `.venv`, or benchmark corpora, and they do not nest `skilltrim/skilltrim`. macOS/Linux uses the shell script; Windows uses the PowerShell script.
 - `SKILL.md`: agent entrypoint; `benchmarks/README.md`: on-demand evaluation guidance.
 - `tests/`: unittest regression suite. `benchmarks/`: synthetic fixtures and pinned real-corpus evidence.
 - `.test-output/`: ignored scratch files and downloaded corpora; never publish this directory.
 
 ## Development
 
-Run from this directory, which is intended to become the standalone repository root:
+Run from this directory. macOS and Linux:
 
 ```console
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install .
+python -m unittest discover -s tests -v
+skilltrim --help
+python benchmarks/run.py
+skilltrim benchmarks/fixtures --json
+bash -n scripts/install-skill.sh
+```
+
+Windows, from the same checkout:
+
+```powershell
 python -m venv .venv
-.venv/Scripts/python -m pip install -e .
-.venv/Scripts/python -m unittest discover -s tests -v
-.venv/Scripts/skilltrim --help
-.venv/Scripts/python benchmarks/run.py
-.venv/Scripts/python scripts/skilltrim.py benchmarks/fixtures --json
+.venv\Scripts\Activate.ps1
+python -m pip install .
+python -m unittest discover -s tests -v
+skilltrim --help
+python benchmarks/run.py
+skilltrim benchmarks/fixtures --json
 ```
 
-On Unix replace `.venv/Scripts/` with `.venv/bin/`. No project linter is configured. `.github/workflows/ci.yml` is new for this public repository: on Python 3.11 and `ubuntu-latest` it installs the project and runs unittest, `skilltrim --help`, and `skilltrim benchmarks/fixtures --json`. Do not describe that workflow as older than the public repository, and do not call a run green until Actions finishes. To validate the bundled skill using existing code:
+Install the agent skill with `bash scripts/install-skill.sh` (macOS/Linux) or `powershell -ExecutionPolicy Bypass -File .\scripts\install-skill.ps1` (Windows). Do not describe either script as having been executed on macOS or Windows unless that run actually happened.
+
+No project linter is configured. `.github/workflows/ci.yml` is new for this public repository: on Python 3.11 and `ubuntu-latest` it installs the project and runs unittest, `skilltrim --help`, and `skilltrim benchmarks/fixtures --json`. Do not describe that workflow as older than the public repository, and do not call a run green until Actions finishes. To validate the bundled skill using existing code, from the activated environment:
 
 ```console
-.venv/Scripts/python -c "from pathlib import Path; from skilltrim.core import parse_skill; parse_skill(Path('SKILL.md').read_text(encoding='utf-8'), 'skilltrim'); print('valid')"
+python -c "from pathlib import Path; from skilltrim.core import parse_skill; parse_skill(Path('SKILL.md').read_text(encoding='utf-8'), 'skilltrim'); print('valid')"
 ```
 
-This validates parsing and metadata, not host discovery or agent behavior. Reproduce real-corpus results using the pinned clone commands in `README.md`, then run `benchmarks/real.py` from this root.
+This validates parsing and metadata, not host discovery or agent behavior. Reproduce real-corpus results using the pinned clone commands in `README.md`, then run `benchmarks/real.py` (paths are anchored to this repository, not the current working directory).
 
 ## Constraints
 

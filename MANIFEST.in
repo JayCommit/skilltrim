@@ -1,4 +1,6 @@
 include SKILL.md
 recursive-include scripts *.py
+recursive-include scripts *.sh
+recursive-include scripts *.ps1
 recursive-include tests *.py
 recursive-include benchmarks *.py *.md *.json
